@@ -1,0 +1,74 @@
+\appendix       %开始附录部分
+\phantomsection % 手动添加锚点，确保超链接正确
+
+\section{主要符号说明}
+
+% 本附录列出论文中使用的关键符号及其含义
+
+\begin{table}[h]
+  \centering
+  \bicaption{主要符号说明}{Notation definitions}
+  \label{tab:notation}
+  \begin{tabular}{cl}
+    \toprule
+    \textbf{符号} & \textbf{含义} \\
+    \midrule
+    GPPS & 香叶基焦磷酸合酶 \\
+    LIS & 芳樟醇合酶 \\
+    IPP & 异戊烯基焦磷酸 \\
+    DMAPP & 二甲基烯丙基焦磷酸 \\
+    GPP & 香叶基焦磷酸 \\
+    MVA & 甲羟戊酸途径 \\
+    MEP & 甲基赤藓糖醇磷酸途径 \\
+    IPTG & 异丙基-β-D-硫代半乳糖苷 \\
+    $U$ & 酶活力单位 \\
+    $\mu$mol & 微摩尔 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{常用缓冲液配方}
+
+\subsection{LB培养基}
+
+\begin{itemize}
+    \item 胰蛋白胨：10 g/L
+    \item 酵母提取物：5 g/L
+    \item NaCl：10 g/L
+    \item pH 7.0，121°C高压灭菌20 min
+\end{itemize}
+
+\subsection{酶活性测定缓冲液}
+
+\begin{itemize}
+    \item Tris碱：6.06 g
+    \item 双蒸水：800 mL
+    \item 用HCl调pH至7.5
+    \item 定容至1000 mL
+\end{itemize}
+
+\section{补充实验结果}
+
+% 补充实验结果
+
+\subsection{酶的动力学参数}
+
+表 \ref{tab:kinetics} 展示了纯化后GPPS和LIS的动力学参数。
+
+\begin{table}[h]
+  \centering
+  \bicaption{酶的动力学参数}{Kinetic parameters of enzymes}
+  \label{tab:kinetics}
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{酶} & \textbf{$K_m$ (mM)} & \textbf{$k_{cat}$ (s$^{-1}$)} & \textbf{$k_{cat}/K_m$ (M$^{-1}$s$^{-1}$)} \\
+    \midrule
+    GPPS & 0.15 & 12.5 & 8.33 $\times$ 10$^4$ \\
+    LIS & 0.28 & 8.6 & 3.07 $\times$ 10$^4$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{固定化酶的储存稳定性}
+
+固定化酶在4°C条件下储存30天后，GPPS保持82.5\%的初始活性，LIS保持78.3\%的初始活性。

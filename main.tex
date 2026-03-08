@@ -1,0 +1,225 @@
+%使用XeLaTex或者LualaLaTex编译
+
+\documentclass[UTF8,AutoFakeBold=1,AutoFakeSlant,zihao=-4]{HZAU}
+\usepackage{graphicx} % 用于插入图片
+\usepackage{setspace} % 用于设置行距
+\usepackage{ctex} % 支持中文字体和字号设置
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute, overlay]{textpos}
+\usepackage{tcolorbox} % 用于创建带边框的盒子
+\usepackage{fancyhdr}
+\tcbuselibrary{skins} % 加载 skins 库以获得更多样式选项
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+
+\usepackage[style=gb7714-2015ay,citestyle=authoryear, bibstyle=numeric, backend=biber]{biblatex}
+\DeclareDelimFormat{nameyeardelim}{\addspace}  % 去掉作者-年份间的逗号
+% 取消标题的引号
+\DeclareFieldFormat[article,inproceedings,incollection,unpublished]{title}{#1}
+\addbibresource{references.bib}  % 替换为你的 .bib 文件名
+% 自定义参考文献标题格式（居中+目录）
+\defbibheading{bibliography}[\centering \heiti \zihao{4} 参考文献]{
+  \section*{#1}  % 居中不编号的标题
+  \addcontentsline{toc}{section}{参考文献}  % 添加到目录
+}
+
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{hzaugreen}{HTML}{67b356} 
+
+%%%%%%%%%%%%%%%%
+\usepackage{bicaption} % 支持双标题
+% 设置中英文标题分隔符（默认为换行）
+\DeclareCaptionOption{separator}{\def\captionseparator{#1}}
+\captionsetup[bi-first]{name=图} % 中文"图"代替"Figure"
+\captionsetup[bi-second]{name=Figure}
+% 设置表格中英文标题格式
+\captionsetup[table][bi-first]{name=表} % 中文"表"代替"Table"
+\captionsetup[table][bi-second]{name=Table}
+
+% 让 figure 编号按 section 分级（格式：Figure 1-1, 1-2, ...）
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section} 
+
+%%%%%%%%%%%%%%%请在这里填写你的论文题目
+\newcommand{\thesisTitleC}{多酶级联催化绿色合成芳樟醇的研究}
+
+\newcommand{\thesisTitleE}{Development of Multi-Enzyme Cascade Catalysis for Green Synthesis of Linalool}
+
+%====================================================
+%%%%%%%%%%%%%%请在这里填写你的个人信息
+%====================================================
+\newcommand{\yourMajor}{生物工程}  %专业
+\newcommand{\yourMajorEn}{BIOENGINEERING}  %专业
+\newcommand{\yourName}{张三}     %名字
+\newcommand{\yourNameEn}{ZHANGSAN}     %名字
+\newcommand{\yourMentor}{李四}        %导师
+\newcommand{\yourMentorEn}{LISI}        %导师
+\newcommand{\Mentorjob}{教授}           %职称
+\newcommand{\MentorjobEn}{PROFESSOR}           %职称
+\newcommand{\studentID}{2021317220XX}   %学号
+\newcommand{\yourDateC}{二〇二五年六月}
+\newcommand{\yourDateEn}{JUNE，2025}
+\newcommand{\yourClass}{生物工程2101}       
+\newcommand{\yourDegree}{工学学士学位}
+\newcommand{\signatureDate}{2025年6月14日}
+%% 记得提交最终版本时找自己导师要签名、以及自己的签名，补上这里的签名！！！
+% 签名图片设置
+% 如需添加签名，请将下方空白框替换为实际签名图片路径，如：Fig/author_signature.png
+\newcommand{\authorSignature}{example-image-empty}  % 作者签名占位
+\newcommand{\mentorSignature}{example-image-empty}  % 导师签名占位
+%====================================================
+
+\begin{document}
+
+% 封面（自动生成）
+\coverpage      %%填写全部信息以确保no warning
+
+%如果你需要印双面,请注意留白
+\newpage
+\thispagestyle{empty}  % 设置空白页不显示页眉页脚
+\mbox{}  % 生成一个空白页
+\newpage
+
+\whitecoverpage      %%填写全部信息以确保no warning
+
+
+
+
+%如果你需要印双面,请注意留白
+\newpage
+\thispagestyle{empty}  % 设置空白页不显示页眉页脚
+\mbox{}  % 生成一个空白页
+\newpage
+
+\begin{authorization}
+%此处为原创性声明,不用填写.也不用删除
+\end{authorization}
+
+\clearpage  % 强制清空浮动体
+\thispagestyle{empty}
+\hbox{}     % 比 \mbox{} 更底层
+\vspace*{\fill}
+\newpage
+
+% 中文摘要
+\begin{abstract}
+
+% 此处为中文摘要内容，请在此填写你的论文摘要。
+% 摘要应简要说明研究背景、研究目的、研究方法、主要结果和结论。
+% 摘要字数一般在300-500字左右。
+
+芳樟醇是一种重要的单萜类香料化合物，广泛应用于食品、化妆品和医药工业。传统的芳樟醇生产主要依赖植物提取和化学合成，但存在原料受限、环境污染等问题。本研究旨在开发一种多酶级联催化体系，实现芳樟醇的绿色生物合成。
+
+本研究通过筛选和优化关键酶基因，构建了包含香叶基焦磷酸合酶（GPPS）和芳樟醇合酶（LIS）的双酶级联反应体系。通过优化酶的表达条件、反应温度、pH值和底物浓度等参数，显著提高了芳樟醇的转化率。同时，采用固定化酶技术提高酶的稳定性和重复使用率，降低了生产成本。
+
+实验结果表明，优化后的多酶级联体系在30°C、pH 7.5条件下反应12小时，芳樟醇的摩尔转化率达到85.3\%，产物纯度超过98\%。固定化酶经过10批次反应后仍保持75\%以上的初始活性。本研究为芳樟醇的绿色合成提供了一种高效、环保的生物技术路线，具有重要的工业应用价值。
+\keywords{芳樟醇；多酶级联催化；绿色合成；固定化酶；生物催化}%填写中文关键词,使用全角分号隔开
+\end{abstract}
+
+\begin{abstractEN}
+%% add enligh abstract to table of contents
+\addcontentsline{toc}{section}{Abstract}
+%% must add a breaked line below to ensure the indent 
+
+% This is the English abstract. Please write your abstract here.
+% The abstract should briefly describe the research background, objectives, 
+% methods, main results, and conclusions.
+
+Linalool is an important monoterpene fragrance compound widely used in food, cosmetics, and pharmaceutical industries. Traditional linalool production mainly relies on plant extraction and chemical synthesis, which face issues such as limited raw materials and environmental pollution. This study aims to develop a multi-enzyme cascade catalysis system for the green biosynthesis of linalool.
+
+In this study, a dual-enzyme cascade reaction system containing geranyl pyrophosphate synthase (GPPS) and linalool synthase (LIS) was constructed by screening and optimizing key enzyme genes. The conversion rate of linalool was significantly improved by optimizing enzyme expression conditions, reaction temperature, pH value, and substrate concentration. Meanwhile, immobilized enzyme technology was employed to enhance enzyme stability and reusability, reducing production costs.
+
+Experimental results showed that the optimized multi-enzyme cascade system achieved a molar conversion rate of 85.3\% and product purity exceeding 98\% under conditions of 30°C and pH 7.5 for 12 hours. The immobilized enzyme maintained over 75\% of its initial activity after 10 batches of reactions. This study provides an efficient and environmentally friendly biotechnological route for linalool synthesis, with significant industrial application value.
+\keywordsEN{Linalool; Multi-enzyme Cascade Catalysis; Green Synthesis; Immobilized Enzyme; Biocatalysis}  % 英文关键词
+\end{abstractEN}
+
+
+% 目录（自动生成）,不用修改
+\contentpage
+
+
+%%% 设置页眉
+%%
+% 正文开始
+\pagestyle{fancy}
+% 正文从第一页开始计算页码
+\setcounter{page}{1}
+% 页眉和页脚（页码）的格式设定
+% 奇数页页眉显示论文题目，偶数页页眉显示学校信息
+\fancyhf{}
+\fancyhead[CO]{\fontsize{10.5pt}{10.5pt}\selectfont{\thesisTitleC}}  % 奇数页页眉：论文题目
+\fancyhead[CE]{\fontsize{10.5pt}{10.5pt}\selectfont{华中农业大学2025届学士学位毕业论文}}  % 偶数页页眉
+\fancyfoot[C]{\fontsize{9pt}{9pt}\selectfont{\thepage}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% 正文 22 磅的行距，段前段后间距为 0
+\setlength{\parskip}{0em}
+\renewcommand{\baselinestretch}{1.53}
+% 正文首行悬挂 1.02cm
+\setlength{\parindent}{1.02cm}
+%%%%%%%%%%%%%%%%%%%以下是正文部分%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 注意，按照毕设要求，引用文章使用\citep而非cite
+\input{chapters/chapter1} \clearpage
+
+\input{chapters/chapter2} \clearpage
+
+\input{chapters/chapter3} \clearpage
+
+\input{chapters/chapter4} \clearpage
+
+\input{chapters/chapter5} \clearpage
+
+\printbibliography[title={\centering 参考文献}]
+
+\nocite{*}      % 显示所有参考文献，即使未被引用,如果你只想引用时显示,请删除
+
+
+%%%%%%附录
+%% 根据个人需要是否添加appendix
+\input{chapters/appendix} \clearpage
+
+%%%%%%%%%%%%%%%%%致谢
+\acknowledgement
+
+本科学习的四年，是我人生中极为重要的阶段。值此毕业论文完成之际，我怀着无比感激的心情，向所有在学习和生活中给予我关怀、指导和帮助的人致以诚挚的谢意。
+
+首先，衷心感谢我的论文指导老师——何新卫老师。老师不仅在选题、研究方法、论文结构等方面给予我极大的支持，更在整个写作过程中以严谨的治学态度、深入的专业素养和细致耐心的指导为我树立了榜样。从文献梳理到实验设计，从语言表达到逻辑推演，老师始终给予我耐心点拨，使我在科研能力、写作规范和独立思考方面都有了显著提升。
+
+其次，感谢学院的各位任课老师，是你们系统、扎实的课程教学、是你们的悉心讲授和无私分享，使我在本科阶段打下了坚实的理论基础，拓展了专业视野，培养了严谨的思维方式和问题意识，也让我对人工智能领域产生了浓厚兴趣，为本课题的研究提供了有力支撑。
+
+我还要特别感谢我的家人，是你们始终如一的理解、包容与支持，给予我稳定的后盾和精神的鼓励，让我能够安心学习，顺利完成本科学业和毕业论文。
+
+感谢我的室友和朋友们，是你们让我的整个大学生活不只是学习，还有欢笑和陪伴。每一个深夜抱怨写不出论文、模型又跑崩了的时刻，是你们陪我“摆烂”也拉我重启；有时候，一个寝室灯都没关，大家“秉烛夜战”的样子，早已成了我最宝贵的青春记忆。
+
+也感谢那些在路上遇到的陌生人，比如论坛上解答过我问题的网友，开源社区中那些无私共享的代码作者，是你们让我明白科研不仅是一种能力，也是一种传承与分享的精神。
+
+这一切琐碎、鸡零狗碎又真切的经历，共同组成了我这一段难忘的毕业旅程。毕业并不是终点，而是另一个起点。感谢所有出现在我大学生活中的人和事，愿我们在各自的人生轨道上，都能勇敢、自由地奔跑。
+
+
+\hfill Jun, 2025 
+
+\hfill 张三
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
