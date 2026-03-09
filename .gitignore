@@ -2,7 +2,6 @@ main.aux
 main.log
 main.out
 main.toc
-main.pdf
 main.bbl
 *.synctex.gz
 main.fdb_latexmk
@@ -12,5 +11,5 @@ main.fls
 main.run.xml
 
 # 排除文档文件
-*.pdf
+# *.pdf
 *.docx
