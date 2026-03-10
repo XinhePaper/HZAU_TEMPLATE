@@ -11,5 +11,5 @@ main.fls
 main.run.xml
 
 # 排除文档文件
-# *.pdf
+main.pdf
 *.docx
