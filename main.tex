@@ -15,16 +15,10 @@
 \usepackage{algpseudocode}
 \usepackage{booktabs}
 
-\usepackage[style=gb7714-2015ay,citestyle=authoryear, bibstyle=numeric, backend=biber]{biblatex}
-\DeclareDelimFormat{nameyeardelim}{\addspace}  % 去掉作者-年份间的逗号
-% 取消标题的引号
-\DeclareFieldFormat[article,inproceedings,incollection,unpublished]{title}{#1}
-\addbibresource{references.bib}  % 替换为你的 .bib 文件名
-% 自定义参考文献标题格式（居中+目录）
-\defbibheading{bibliography}[\centering \heiti \zihao{4} 参考文献]{
-  \section*{#1}  % 居中不编号的标题
-  \addcontentsline{toc}{section}{参考文献}  % 添加到目录
-}
+% 使用 natbib + gbt7714-numerical.bst 实现方括号上标引用
+\usepackage[sort&compress,numbers,super]{natbib}
+\renewcommand*{\citenumfont}[1]{[#1]}  % 给引用数字添加方括号
+\bibliographystyle{gbt7714-numerical}
 
 
 \definecolor{lightgray}{rgb}{.9,.9,.9}
@@ -71,7 +65,7 @@
 \newcommand{\signatureDate}{2025年6月14日}
 %% 记得提交最终版本时找自己导师要签名、以及自己的签名，补上这里的签名！！！
 % 签名图片设置
-% 如需添加签名，请将下方空白框替换为实际签名图片路径，如：Fig/author_signature.png
+% 如需添加签名，请将下方空白框替换为实际签名图片路径，如：figure/author_signature.png
 \newcommand{\authorSignature}{example-image-empty}  % 作者签名占位
 \newcommand{\mentorSignature}{example-image-empty}  % 导师签名占位
 %====================================================
@@ -178,9 +172,9 @@ Experimental results showed that the optimized multi-enzyme cascade system achie
 
 \input{chapters/chapter5} \clearpage
 
-\printbibliography[title={\centering 参考文献}]
-
-\nocite{*}      % 显示所有参考文献，即使未被引用,如果你只想引用时显示,请删除
+% 显示所有参考文献，即使未被引用,如果你只想引用时显示,请删除下面的 \nocite{*}
+\nocite{*}
+\bibliography{references}
 
 
 %%%%%%附录

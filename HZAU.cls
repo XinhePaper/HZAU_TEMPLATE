@@ -383,7 +383,7 @@
     % 添加 2 个汉字宽度的垂直间距
   
     \centering
-    \includegraphics[width=0.8\textwidth]{./Fig/HZAU.png}
+    \includegraphics[width=0.8\textwidth]{./figure/HZAU.png}
     % 插入校徽图片，文件名为 `HZAU.png`
     % \quad \quad \quad
     % 添加一些水平间距
